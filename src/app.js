@@ -52,7 +52,7 @@ app.get('/tweets', (req,res)=> {
             tweets.push(t)
             i++;
         }
-        res.send(tweets)
+        res.status(200).json(tweets)
     }
     else if(messages.length < 10 && messages.length >0){
         let tweets=[]
@@ -65,7 +65,7 @@ app.get('/tweets', (req,res)=> {
             tweets.push(t)
             i++;
         }
-        res.send(tweets)
+        res.status(200).json(tweets)
     }
     else{
         let tweets=[]
