@@ -7,6 +7,7 @@ app.use(express.json())
 
 let messages=[]
 let users=[]
+let usernames=[]
 let avatars=[]
 
 
@@ -16,20 +17,27 @@ app.post("/sign-up", (req,res) => {
         username: username,
         avatar: avatar
     }
+    usernames.push(username)
     users.push(user)
     res.send("Ok")
 })
 
 app.post("/tweets", (req,res) => {
     const {username, tweet} = req.body;
-    const message= {
-        username: username,
-        tweet: tweet
+    if(!usernames.includes(username)){
+        res.send("UNAUTHORIZED")
     }
-    messages.push(message)
-    const a= users.find((tuites)=> tuites.username === username)
-    avatars.push(a.avatar)
-    res.send("Ok")
+    else{
+        const message= {
+            username: username,
+            tweet: tweet
+        }
+        messages.push(message)
+        const a= users.find((tuites)=> tuites.username === username)
+        avatars.push(a.avatar)
+        res.send("Ok")
+    }
+    
 })
 
 app.get('/tweets', (req,res)=> {
