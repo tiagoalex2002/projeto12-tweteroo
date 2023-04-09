@@ -57,6 +57,7 @@ app.get('/tweets', (req,res)=> {
     else if(messages.length < 10 && messages.length >0){
         let tweets=[]
         let i=1
+        console.log(messages)
         while(i < messages.length){
             let us= messages[messages.length-i].username
             let tw=messages[messages.length-i].tweet
