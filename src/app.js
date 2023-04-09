@@ -56,16 +56,14 @@ app.get('/tweets', (req,res)=> {
     }
     else if(messages.length < 10 && messages.length >0){
         let tweets=[]
-        let i=1
-        console.log(messages)
-        while(i < messages.length){
-            let us= messages[messages.length-i].username
-            let tw=messages[messages.length-i].tweet
+        let i=0
+        while(i<messages.length){
             let av=avatars[avatars.length-i]
-            const t= {username: us, avatar: av, tweet: tw}
+            const t= {username: messages[i].username, avatar:av, tweet: messages[i].tweet}
             tweets.push(t)
-            i++;
+            i++
         }
+        console.log(tweets)
         res.status(200).json(tweets)
     }
     else{
