@@ -20,7 +20,7 @@ app.post("/sign-up", (req,res) => {
     res.send("Ok")
 })
 
-app.post("tweets", (req,res) => {
+app.post("/tweets", (req,res) => {
     const {username, tweet} = req.body;
     const message= {
         username: username,
