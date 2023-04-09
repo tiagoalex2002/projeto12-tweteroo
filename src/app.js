@@ -43,7 +43,7 @@ app.post("/tweets", (req,res) => {
 app.get('/tweets', (req,res)=> {
     if (messages.length >= 10){
         let tweets=[]
-        let i=0
+        let i=1
         while (i < 10){
             let us= messages[messages.length-i].username
             let tw=messages[messages.length-i].tweet
@@ -56,7 +56,7 @@ app.get('/tweets', (req,res)=> {
     }
     else if(messages.length < 10 && messages.length >0){
         let tweets=[]
-        let i=0
+        let i=1
         while(i < messages.length){
             let us= messages[messages.length-i].username
             let tw=messages[messages.length-i].tweet
@@ -73,5 +73,5 @@ app.get('/tweets', (req,res)=> {
     }
 })
 
-app.listen(5000)
+app.listen(5000, ()=> console.log("Servidor rodando"))
 
