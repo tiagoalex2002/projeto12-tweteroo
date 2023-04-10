@@ -13,19 +13,23 @@ let avatars=[]
 
 app.post("/sign-up", (req,res) => {
     const {username, avatar} = req.body;
+    if(username=== "" || typeof username !== "string" || !username || avatar==="" || typeof avatar !== "string" || !avatar){
+        res.status(400).send("Todos os campos são obrigatórios!")
+        return;
+    }
     const user= {
         username: username,
         avatar: avatar
     }
     usernames.push(username)
     users.push(user)
-    res.send("Ok")
+    res.status(201).send("Ok")
 })
 
 app.post("/tweets", (req,res) => {
     const {username, tweet} = req.body;
     if(!usernames.includes(username)){
-        res.send("UNAUTHORIZED")
+        res.status(400).send("UNAUTHORIZED")
     }
     else{
         const message= {
@@ -36,7 +40,7 @@ app.post("/tweets", (req,res) => {
         const a= users.find((tuites)=> tuites.username === username)
         avatars.push(a.avatar)
         console.log(avatars)
-        res.send("Ok")
+        res.status(201).send("Ok")
     }
     
 })
