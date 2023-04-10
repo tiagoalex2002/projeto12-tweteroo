@@ -44,7 +44,7 @@ app.get('/tweets', (req,res)=> {
     if (messages.length >= 10){
         let tweets=[]
         let i=1
-        while (i < 10){
+        while (i <= 10){
             let us= messages[messages.length-i].username
             let tw=messages[messages.length-i].tweet
             let av=avatars[avatars.length-i]
