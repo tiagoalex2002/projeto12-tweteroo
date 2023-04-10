@@ -35,6 +35,7 @@ app.post("/tweets", (req,res) => {
         messages.push(message)
         const a= users.find((tuites)=> tuites.username === username)
         avatars.push(a.avatar)
+        console.log(avatars)
         res.send("Ok")
     }
     
@@ -59,8 +60,8 @@ app.get('/tweets', (req,res)=> {
         let tweets=[]
         let i=0
         while(i<messages.length){
-            let av=avatars[avatars.length-i]
-            const t= {username: messages[i].username, avatar:av, tweet: messages[i].tweet}
+            let av=avatars[avatars.length-(1+i)]
+            const t= {username : messages[i].username, avatar:av, tweet: messages[i].tweet}
             tweets.push(t)
             i++
         }
